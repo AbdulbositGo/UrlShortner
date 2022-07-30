@@ -15,7 +15,7 @@ def create(request):
     if request.method == 'POST':
         print('salom')
         link = request.POST.get('link')
-        if link[:8] != 'https://':
+        if link[:8] not in ('https://', 'http://'):
             link = "https://" + link
         old_link = URL.objects.filter(link=link).first()
         if old_link:
